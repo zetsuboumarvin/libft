@@ -2,6 +2,19 @@
 #include <stdio.h>
 #include <strings.h>
 #include <string.h>
+#include <ctype.h>
+
+void	ft_test(char *s)
+{
+	*s = ft_toupper(*s);
+}
+
+char	ft_test1(char s)
+{
+	int	c;
+	c = (int)s;
+	return (c);
+}
 
 int		main(int argc, char **argv)
 {
@@ -305,6 +318,66 @@ int		main(int argc, char **argv)
 	printf("%s\n", ft_strnstr(strstr1, need1, 7));
 	printf("%s\n", strnstr(strstr1, need1, 7));
 
+	// strcmp
+	printf("\n\t\tSTRCMP\n");
+	char	scmp1[] = "test string1";
+	char	scmp2[] = "test string2";
+	char	scmp3[] = "";
+	printf("%d\n", ft_strcmp(scmp1, scmp2));
+	printf("%d\n", strcmp(scmp1, scmp2));
+	printf("-----------------\n");
+	printf("%d\n", ft_strcmp(scmp3, scmp2));
+	printf("%d\n", strcmp(scmp3, scmp2));
+	printf("-----------------\n");
+	printf("%d\n", ft_strcmp(scmp1, scmp3));
+	printf("%d\n", strcmp(scmp1, scmp3));
+
+	// strncmp
+	printf("\n\t\tSTRNCMP\n");
+	printf("%d\n", ft_strncmp(scmp1, scmp2, 5));
+	printf("%d\n", strncmp(scmp1, scmp2, 5));
+	printf("-----------------\n");
+	printf("%d\n", ft_strncmp(scmp1, scmp2, 25));
+	printf("%d\n", strncmp(scmp1, scmp2, 25));
+	printf("-----------------\n");
+	printf("%d\n", ft_strncmp(scmp3, scmp2, 1));
+	printf("%d\n", strncmp(scmp3, scmp2, 1));
+	printf("-----------------\n");
+	printf("%d\n", ft_strncmp(scmp1, scmp3, 0));
+	printf("%d\n", strncmp(scmp1, scmp3, 0));
+	printf("-----------------\n");
+	printf("%d\n", ft_strncmp(scmp1, scmp2, 12));
+	printf("%d\n", strncmp(scmp1, scmp2, 12));
+
+	// atoi
+	printf("\n\t\tATOI\n");
+	char	ato1[] = "0";
+	char	ato2[] = "-2147483648";
+	char	ato3[] = "2147483647";
+	char	ato4[] = "     ";
+	char	ato5[] = "   -   123";
+	char	ato6[] = "	+123asd";
+	char	ato7[] = " -as+123";
+	printf("%d\n", ft_atoi(ato1));
+	printf("%d\n", atoi(ato1));
+	printf("-----------------\n");
+	printf("%d\n", ft_atoi(ato2));
+	printf("%d\n", atoi(ato2));
+	printf("-----------------\n");
+	printf("%d\n", ft_atoi(ato3));
+	printf("%d\n", atoi(ato3));
+	printf("-----------------\n");
+	printf("%d\n", ft_atoi(ato4));
+	printf("%d\n", atoi(ato4));
+	printf("-----------------\n");
+	printf("%d\n", ft_atoi(ato5));
+	printf("%d\n", atoi(ato5));
+	printf("-----------------\n");
+	printf("%d\n", ft_atoi(ato6));
+	printf("%d\n", atoi(ato6));
+	printf("-----------------\n");
+	printf("%d\n", ft_atoi(ato7));
+	printf("%d\n", atoi(ato7));
 
 	//isalpha
 	printf("\n\t\tISALPHA\n");
@@ -323,10 +396,69 @@ int		main(int argc, char **argv)
 	printf("0 - %d\n", ft_isdigit('0'));
 	printf("+ - %d\n", ft_isdigit('+'));
 
+	//isalnum
+	printf("\n\t\tISALNUM\n");
+	printf("a - %d\n", ft_isalnum('a'));
+	printf("a - %d\n", isalnum('a'));
+	printf("-----------------\n");
+	printf("5 - %d\n", ft_isalnum('5'));
+	printf("5 - %d\n", isalnum('5'));
+	printf("-----------------\n");
+	printf("+ - %d\n", ft_isalnum('+'));
+	printf("+ - %d\n", isalnum('+'));
 
+	// toupper
+	printf("\n\t\tTOUPPER\n");
+	int		upc = 'a';
+	int		upc1 = '1';
+	ft_putchar(ft_toupper(upc));
+	ft_putchar(toupper(upc));
+	printf("\n");
+	ft_putchar(ft_toupper(upc1));
+	ft_putchar(toupper(upc1));
 
+	// tolower
+	printf("\n\t\tTOLOWER\n");
+	int		low = 'A';
+	int		low1 = '1';
+	ft_putchar(ft_tolower(low));
+	ft_putchar(tolower(low));
+	printf("\n");
+	ft_putchar(ft_tolower(low1));
+	ft_putchar(tolower(low1));
 
+	/*
+	 * **********************************PART 2****************************************
+	 */
 
+	//strclr
+	printf("\n\t\tSTRCLR\n");
+	char strclrtest[] = "hello world!";
+	ft_strclr(strclrtest);
+	printf("---check:%s\n---", strclrtest);
+
+	//striter
+	printf("\n\t\tSTRITER\n");
+	char	iter[] = "text to upper";
+	ft_striter(iter, ft_test);
+	printf("%s\n", iter);
+
+	//strmap
+	printf("\n\t\tSTRMAP\n");
+	char	*newiter;
+	char	iter1[] = "text to upper";
+	newiter = ft_strmap(iter, ft_test1);
+	printf("%s\n", iter1);
+	printf("%s\n", newiter);
+
+	//strequ
+	printf("\n\t\tSTREQU\n");
+	char	sequ1[] = "";
+	printf("%d\n", ft_strequ(scmp1, scmp2));
+	printf("-----------------\n");
+	printf("%d\n", ft_strequ(scmp3, scmp2));
+	printf("-----------------\n");
+	printf("%d\n", ft_strequ(sequ1, scmp3));
 
 
 	//putchar

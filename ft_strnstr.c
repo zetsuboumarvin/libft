@@ -6,7 +6,7 @@
 /*   By: jflorent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 15:37:21 by jflorent          #+#    #+#             */
-/*   Updated: 2019/09/04 16:20:21 by jflorent         ###   ########.fr       */
+/*   Updated: 2019/09/05 15:49:28 by jflorent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	search(const char *hay, const char *nee, size_t len,
 {
 	while (*hay == *nee || *nee == '\0')
 	{
-		if (*nee == '\0' || i == len - 1)
+		if (*nee == '\0' && i < len)
 			return (1);
 		hay++;
 		nee++;
@@ -25,7 +25,6 @@ static int	search(const char *hay, const char *nee, size_t len,
 	}
 	return (0);
 }
-
 
 char		*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {

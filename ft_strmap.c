@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jflorent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/04 10:52:50 by jflorent          #+#    #+#             */
-/*   Updated: 2019/09/05 09:20:10 by jflorent         ###   ########.fr       */
+/*   Created: 2019/09/05 10:18:37 by jflorent          #+#    #+#             */
+/*   Updated: 2019/09/05 10:29:44 by jflorent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_memcmp(const void *s1, const void *s2, size_t n)
+char		*ft_strmap(char const *s, char (*f)(char))
 {
-	while (*(char*)s1 == *(char*)s2 && n-- > 0)
+	char	*new;
+	int		i;
+
+	i = 0;
+	new = (char*)malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (!new)
+		return (NULL);
+	while (s[i])
 	{
-		s1++;
-		s2++;
+		new[i] = (*f)(s[i]);
+		i++;
 	}
-	if (*(char*)s1 != *(char*)s2)
-		return (*(char*)s1 - *(char*)s2);
-	else
-		return (0);
+	new[i] = '\0';
+	return (new);
 }

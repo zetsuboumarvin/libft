@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jflorent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/04 10:52:50 by jflorent          #+#    #+#             */
-/*   Updated: 2019/09/05 09:20:10 by jflorent         ###   ########.fr       */
+/*   Created: 2019/09/05 09:39:16 by jflorent          #+#    #+#             */
+/*   Updated: 2019/09/05 09:41:36 by jflorent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_memcmp(const void *s1, const void *s2, size_t n)
+char		*ft_strnew(size_t size)
 {
-	while (*(char*)s1 == *(char*)s2 && n-- > 0)
-	{
-		s1++;
-		s2++;
-	}
-	if (*(char*)s1 != *(char*)s2)
-		return (*(char*)s1 - *(char*)s2);
-	else
-		return (0);
+	char	*new;
+
+	new = (char*)malloc(sizeof(char) * (size + 1));
+	if (!new)
+		return (NULL);
+	ft_bzero(new, size + 1);
+	return (new);
 }

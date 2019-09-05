@@ -1,26 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jflorent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/04 10:52:50 by jflorent          #+#    #+#             */
-/*   Updated: 2019/09/05 09:20:10 by jflorent         ###   ########.fr       */
+/*   Created: 2019/09/05 08:22:07 by jflorent          #+#    #+#             */
+/*   Updated: 2019/09/05 08:46:09 by jflorent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_memcmp(const void *s1, const void *s2, size_t n)
+int		ft_atoi(const char *s)
 {
-	while (*(char*)s1 == *(char*)s2 && n-- > 0)
+	int		i;
+	int		base;
+	int		sign;
+
+	i = 0;
+	base = 0;
+	sign = 1;
+	while (ft_isspace(s[i]))
+		i++;
+	if (s[i] == '-' || s[i] == '+')
 	{
-		s1++;
-		s2++;
+		if (s[i] == '-')
+			sign = -sign;
+		i++;
 	}
-	if (*(char*)s1 != *(char*)s2)
-		return (*(char*)s1 - *(char*)s2);
-	else
-		return (0);
+	while (ft_isdigit(s[i]))
+	{
+		base = base * 10 + s[i] - '0';
+		i++;
+	}
+	return (sign * base);
 }
