@@ -460,6 +460,41 @@ int		main(int argc, char **argv)
 	printf("-----------------\n");
 	printf("%d\n", ft_strequ(sequ1, scmp3));
 
+	//strsub
+	printf("\n\t\tSTRSUB\n");
+	char	sub[] = "find the substring";
+	printf("%s\n", ft_strsub(sub, 5, 8));
+
+	//strjoin
+	printf("\n\t\tSTRJOIN\n");
+	char	joins1[] = "first stri";
+	char	joins2[] = "ng and second";
+	printf("%s\n", ft_strjoin(joins1, joins2));
+
+	//strtrim
+	printf("\n\t\tSTRTRIM\n");
+	char	trim[] = "   de string ";
+	char	trim1[] = "test string	";
+	char	trim2[] = "		string2";
+	printf("%s\n", ft_strtrim(trim));
+	printf("%s\n", ft_strtrim(trim1));
+	printf("%s\n", ft_strtrim(trim2));
+
+	//strsplit
+	printf("\n\t\tSTRSPLIT\n");
+	char	split[] = " this is the  test ";
+	char	**arr;
+	arr = ft_strsplit(split, ' ');
+	while (*arr)
+	{
+		printf("%s\n", *arr);
+		arr++;
+	}
+
+	//itoa
+	printf("\n\t\tITOA\n");
+	printf("%s\n", ft_itoa(-2147483648));
+	printf("%s\n", ft_itoa(0));
 
 	//putchar
 	printf("\n\t\tPUTCHAR\n");

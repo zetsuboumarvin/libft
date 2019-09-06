@@ -12,8 +12,14 @@
 
 #include "libft.h"
 
-char		*ft_strsub(char const *s unsigned int start, size_t len)
+char		*ft_strsub(char const *s, unsigned int start, size_t len)
 {
 	char	*new;
 
-	new = (char*)malloc(
+	new = (char*)malloc(sizeof(char) * (len + 1));
+	if (!new)
+		return (NULL);
+	ft_strncpy(new, &s[start], len);
+	new[len] = '\0';
+	return (new);
+}
