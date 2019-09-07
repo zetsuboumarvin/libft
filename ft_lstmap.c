@@ -1,29 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jflorent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/07 13:23:36 by jflorent          #+#    #+#             */
-/*   Updated: 2019/09/07 13:36:12 by jflorent         ###   ########.fr       */
+/*   Created: 2019/09/07 14:14:35 by jflorent          #+#    #+#             */
+/*   Updated: 2019/09/07 14:26:35 by jflorent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr(int n)
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	unsigned int	num;
+	t_list		*temp;
+	t_list		*new;
+	t_list		*head;
+	int			i;
 
-	if (n < 0)
+	i = 0;
+	if (!lst)
+		return (NULL);
+	while (lst)
 	{
-		num = 0 - (unsigned)n;
-		ft_putchar('-');
+		temp = lst->next;
+		new = (*f)(lst);
+		if (!new)
+			return (NULL);
+		if (i == 0)
+			head = new;
+		new = new->next;
+		i++;
+		lst = temp;
 	}
-	else
-		num = (unsigned)n;
-	if (num > 9)
-		ft_putnbr(num / 10);
-	ft_putchar(num % 10 + '0');
+	return (head);
 }

@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jflorent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/07 13:23:36 by jflorent          #+#    #+#             */
-/*   Updated: 2019/09/07 13:36:12 by jflorent         ###   ########.fr       */
+/*   Created: 2019/09/07 14:07:57 by jflorent          #+#    #+#             */
+/*   Updated: 2019/09/07 14:09:26 by jflorent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr(int n)
+void		ft_lstadd(t_list **alst, t_list *new)
 {
-	unsigned int	num;
-
-	if (n < 0)
-	{
-		num = 0 - (unsigned)n;
-		ft_putchar('-');
-	}
-	else
-		num = (unsigned)n;
-	if (num > 9)
-		ft_putnbr(num / 10);
-	ft_putchar(num % 10 + '0');
+	new->next = *alst;
+	*alst = new;
 }
