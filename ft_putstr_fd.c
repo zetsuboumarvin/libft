@@ -6,7 +6,7 @@
 /*   By: jflorent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 13:40:54 by jflorent          #+#    #+#             */
-/*   Updated: 2019/09/07 13:42:00 by jflorent         ###   ########.fr       */
+/*   Updated: 2019/09/07 14:49:14 by jflorent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 void	ft_putstr_fd(char const *s, int fd)
 {
 	while (*s)
-		write(fd, *s++, 1);
+		ft_putchar_fd(*s, fd);
 }

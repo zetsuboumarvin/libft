@@ -6,7 +6,7 @@
 #    By: jflorent <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/07 12:55:13 by jflorent          #+#    #+#              #
-#    Updated: 2019/09/07 13:19:01 by jflorent         ###   ########.fr        #
+#    Updated: 2019/09/07 14:55:17 by jflorent         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ $(OBJS): $(SRCS)
 
 $(NAME): $(OBJS)
 	ar rc $(NAME) $(OBJS)
+	chmod 777 $(NAME)
 
 clean:
 	rm -f $(OBJS)
