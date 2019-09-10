@@ -6,7 +6,7 @@
 /*   By: jflorent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/03 15:02:43 by jflorent          #+#    #+#             */
-/*   Updated: 2019/09/10 13:27:25 by jflorent         ###   ########.fr       */
+/*   Updated: 2019/09/10 14:44:49 by jflorent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,8 @@ t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
 int					ft_isspace(int c);
 int					ft_abs(int n);
+void				ft_printbits(unsigned char octet);
+int					ft_factorial(int nb);
+int					ft_sqrt(int nb);
 
 #endif
