@@ -6,7 +6,7 @@
 /*   By: jflorent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 13:40:54 by jflorent          #+#    #+#             */
-/*   Updated: 2019/09/07 14:49:14 by jflorent         ###   ########.fr       */
+/*   Updated: 2019/09/10 12:01:59 by jflorent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 void	ft_putstr_fd(char const *s, int fd)
 {
+	if (!s)
+		return ;
 	while (*s)
+	{
 		ft_putchar_fd(*s, fd);
+		s++;
+	}
 }

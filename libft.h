@@ -6,7 +6,7 @@
 /*   By: jflorent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/03 15:02:43 by jflorent          #+#    #+#             */
-/*   Updated: 2019/09/07 14:27:05 by jflorent         ###   ########.fr       */
+/*   Updated: 2019/09/10 13:27:25 by jflorent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
+# define FT_ULONG_MAX ((unsigned long)(~0L))
+# define FT_LONG_MAX ((long)(FT_ULONG_MAX >> 1))
+# define FT_LONG_MIN ((long)(~FT_LONG_MAX))
 
 typedef struct		s_list
 {
@@ -86,5 +89,6 @@ void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
 int					ft_isspace(int c);
+int					ft_abs(int n);
 
 #endif

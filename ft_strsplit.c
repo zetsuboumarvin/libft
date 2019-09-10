@@ -6,7 +6,7 @@
 /*   By: jflorent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 13:24:57 by jflorent          #+#    #+#             */
-/*   Updated: 2019/09/07 13:25:00 by jflorent         ###   ########.fr       */
+/*   Updated: 2019/09/10 12:26:14 by jflorent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,26 @@ static char	*create_word(char const *s, char c)
 	return (word);
 }
 
-char		**ft_strsplit(char const *s, char c)
+static void	free_all(char **arr)
 {
 	int		i;
-	char	**arr;
+
+	i = 0;
+	while (arr[i])
+	{
+		free(arr[i]);
+		arr[i] = NULL;
+		i++;
+	}
+}
+
+static int	create_array(char **arr, char const *s, char c)
+{
+	int		i;
 	int		j;
 
 	i = 0;
 	j = 0;
-	arr = (char**)malloc(sizeof(char*) * (count_words(s, c) + 1));
-	if (!arr)
-		return (NULL);
 	while (s[i])
 	{
 		while (s[i] == c && s[i])
@@ -69,12 +78,32 @@ char		**ft_strsplit(char const *s, char c)
 		{
 			arr[j] = create_word(&s[i], c);
 			if (arr[j] == NULL)
-				return (NULL);
+			{
+				free_all(arr);
+				return (0);
+			}
 			j++;
 		}
 		while (s[i] != c && s[i])
 			i++;
 	}
 	arr[j] = NULL;
+	return (1);
+}
+
+char		**ft_strsplit(char const *s, char c)
+{
+	char	**arr;
+
+	if (!s)
+		return (NULL);
+	arr = (char**)malloc(sizeof(char*) * (count_words(s, c) + 1));
+	if (!arr)
+		return (NULL);
+	if (!create_array(arr, s, c))
+	{
+		free(arr);
+		arr = NULL;
+	}
 	return (arr);
 }

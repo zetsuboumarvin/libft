@@ -6,7 +6,7 @@
 #    By: jflorent <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/07 12:55:13 by jflorent          #+#    #+#              #
-#    Updated: 2019/09/07 14:55:17 by jflorent         ###   ########.fr        #
+#    Updated: 2019/09/09 11:19:30 by jflorent         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
-$(OBJS): $(SRCS)
+%.o: %.c
 	gcc -c $(FLAGS) $^
 
 $(NAME): $(OBJS)
@@ -31,3 +31,5 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean re

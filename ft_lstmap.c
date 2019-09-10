@@ -6,33 +6,50 @@
 /*   By: jflorent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 14:14:35 by jflorent          #+#    #+#             */
-/*   Updated: 2019/09/07 14:26:35 by jflorent         ###   ########.fr       */
+/*   Updated: 2019/09/10 12:14:37 by jflorent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
+static void		free_all(t_list **head)
 {
 	t_list		*temp;
+
+	temp = NULL;
+	while (*head)
+	{
+		temp = (*head)->next;
+		free(*head);
+		*head = temp;
+	}
+}
+
+t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
+{
 	t_list		*new;
 	t_list		*head;
-	int			i;
+	t_list		*prev;
 
-	i = 0;
-	if (!lst)
+	prev = NULL;
+	head = NULL;
+	if (!lst || !f)
 		return (NULL);
 	while (lst)
 	{
-		temp = lst->next;
 		new = (*f)(lst);
-		if (!new)
-			return (NULL);
-		if (i == 0)
+		new = ft_lstnew(new->content, new->content_size);
+		if (!prev)
 			head = new;
-		new = new->next;
-		i++;
-		lst = temp;
+		if (!new)
+		{
+			free_all(&head);
+			return (NULL);
+		}
+		if (prev)
+			prev->next = new;
+		prev = new;
+		lst = lst->next;
 	}
 	return (head);
 }

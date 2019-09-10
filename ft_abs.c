@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdel.c                                        :+:      :+:    :+:   */
+/*   ft_abs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jflorent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/07 14:04:23 by jflorent          #+#    #+#             */
-/*   Updated: 2019/09/10 12:13:02 by jflorent         ###   ########.fr       */
+/*   Created: 2019/09/10 13:26:33 by jflorent          #+#    #+#             */
+/*   Updated: 2019/09/10 13:27:08 by jflorent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
+int		ft_abs(int n)
 {
-	t_list		*temp;
-
-	if (!alst || !(*alst) || !del)
-		return ;
-	while (*alst)
-	{
-		temp = (*alst)->next;
-		(*del)((*alst)->content, (*alst)->content_size);
-		free(*alst);
-		*alst = temp;
-	}
+	if (n < 0)
+		return (-n);
+	else
+		return (n);
 }
