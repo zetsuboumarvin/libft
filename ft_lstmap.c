@@ -6,7 +6,7 @@
 /*   By: jflorent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 14:14:35 by jflorent          #+#    #+#             */
-/*   Updated: 2019/09/10 12:14:37 by jflorent         ###   ########.fr       */
+/*   Updated: 2019/09/11 10:58:53 by jflorent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void		free_all(t_list **head)
 	while (*head)
 	{
 		temp = (*head)->next;
+		free((*head)->content);
 		free(*head);
 		*head = temp;
 	}

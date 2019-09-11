@@ -6,7 +6,7 @@
 /*   By: jflorent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 11:05:33 by jflorent          #+#    #+#             */
-/*   Updated: 2019/09/04 11:09:59 by jflorent         ###   ########.fr       */
+/*   Updated: 2019/09/11 10:57:48 by jflorent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t		ft_strlen(const char *s)
 {
-	int		len;
+	size_t		len;
 
 	len = 0;
 	while (*s)

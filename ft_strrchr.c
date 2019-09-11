@@ -6,7 +6,7 @@
 /*   By: jflorent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 14:43:39 by jflorent          #+#    #+#             */
-/*   Updated: 2019/09/09 14:20:53 by jflorent         ###   ########.fr       */
+/*   Updated: 2019/09/11 11:02:06 by jflorent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 char		*ft_strrchr(const char *s, int c)
 {
-	char	*temp;
-	char	*result;
+	unsigned char	*temp;
+	unsigned char	*result;
 
-	temp = (char*)s;
+	temp = (unsigned char*)s;
 	result = NULL;
 	while (*temp)
 	{
@@ -27,5 +27,5 @@ char		*ft_strrchr(const char *s, int c)
 	}
 	if (*temp == (unsigned char)c)
 		result = temp;
-	return (result);
+	return ((char*)result);
 }
